@@ -1,0 +1,30 @@
+{
+  "id": "2288919",
+  "name": "音乐an'niu",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6488967",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "16136951",
+      "name": "循环",
+      "font_class": "xunhuan",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "18661855",
+      "name": "单曲循环",
+      "font_class": "hanhan-01-01",
+      "unicode": "e6ae",
+      "unicode_decimal": 59054
+    }
+  ]
+}
