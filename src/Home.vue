@@ -100,7 +100,7 @@
       <van-icon name="add-o" size="1.8rem" @click="add" class="ad"/>
     </div>
     <hr>
-    <h2>热歌榜</h2>
+    <h2>歌单</h2>
     <van-icon name="fire" size="3rem" />
     
 
@@ -207,17 +207,11 @@ export default {
     },
     //拖动进度条事件
     onChange(slide_value) {
-      //Toast('当前值：' + slide_value);
       //改变进度条 当前音频时间改变
       this.audioObj.currentTime = (slide_value/100) * this.audioObj.duration;
       this.audioObj.play();
       this.playBtnName = 'pause-circle-o';
       this.isPlayTrue =1;
-      //测试
-      //console.log("当前时间"+this.audioObj.currentTime);
-      //console.log('总时间' + this.audioObj.duration);
-      //console.log('进度' + slide_value);
-
     },
   
     //点击歌曲列表切换歌曲

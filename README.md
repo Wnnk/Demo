@@ -1,6 +1,8 @@
 # musicplay
 
 > A Vue.js project
+Vant:npm i vant -S
+Vuex:npm install vuex --save
 
 ## Build Setup
 

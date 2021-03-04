@@ -51,56 +51,78 @@
 
 <script>
 import { Toast } from 'vant'
+import {mapState,mapActions,mapGetters} from 'vuex'
+
+
 export default {
     data(){
         return{
-            active:2,   //tab
-            user:new Map,    //用户列表
-            user_name:'',   //用户名
-            user_password:'',   //注册密码
-            twice_password:'',  //确认注册密码
-            login_name:'',      //登录 用户名
-            login_password:'',  //登录密码
+            //active:2,   //tab
+            //user:new Map,    //用户列表
+            //user_name:'',   //用户名
+            //user_password:'',   //注册密码
+            //twice_password:'',  //确认注册密码
+            //login_name:'',      //登录 用户名
+            //login_password:'',  //登录密码  
 
         }
     },
-    mounted(){
+    computed:{
+        user_name:{
+            get(){
+                return this.$store.state.user_name
+            },
+            set(newVal){
+                this.$store.commit('CHANGE_NAME',newVal)
+            }
+        },
+        user_password:{
+            get(){
+                return this.$store.state.user_password
+            },
+            set(newVal){
+                this.$store.commit('CHANGE_PASSWORD',newVal)
+            }
+        },
+       twice_password:{
+            get(){
+                return this.$store.state.twice_password
+            },
+            set(newVal){
+                this.$store.commit('CHANGE_TWICE',newVal)
+            },
+        },
+        active:{
+            get(){
+                return this.$store.state.active
+            },
+            set(){
+            }
+        },
+        login_name:{
+            get(){
+                return this.$store.state.login_name
+            },
+            set(newVal){
+                this.$store.commit('LOGIN_NAME',newVal)
+            }
+        },
+        login_password:{
+            get(){
+                return this.$store.state.login_password
+            },
+            set(newVal){
+                this.$store.commit('LOGIN_PASSWORD',newVal)
+            }
+        }
+
     },
+
     methods:{
         go_home(){
             this.$router.push({path:'/home'})     
         },
-        
-        register(){
-            if(!this.user_name){
-                Toast('用户名不能为空')
-            }else if(!this.user_password){
-                Toast('密码不能为空')
-            }else if(this.twice_password != this.user_password){
-                Toast('两次密码不一致')
-            }else if(this.user.has(`${this.user_name}`) === true){
-                Toast('该用户名已经存在')
-            }else{
-                this.user.set(`${this.user_name}`,`${this.user_password}`);
-                this.active =1;
-                
-            }
-                        
-        },
-        user_login(){
-             const check_name = this.user.has(`${this.login_name}`);
-             const check_password = this.user.get(`${this.login_name}`);
-             if(check_name === false){
-                 Toast('用户名不存在');
-             }else if(check_password != this.login_password ){
-                 Toast('密码不正确');
-             }else{
-                this.$router.push({path:'/home',query:{use:JSON.stringify(this.user)}});
-                console.log(this.user)
-                Toast('登录成功')
-            }
-        },
-
+        ...mapActions(['register','user_login'])
     }
 }
 </script>
